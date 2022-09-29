@@ -1,10 +1,9 @@
-#from IPython.display import clear_output
-import os
 
+player1 = input("Enter Player 1 name : ").upper()
+player2 = input("Enter Player 2 name : ").upper()
 #Display the board
 def display_board(board):
-    os.system('cls')
-    #clear_output() # Remember, this only works in jupyter!
+   
     
     print('   |   |')
     print(' ' + board[7] + ' | ' + board[8] + ' | ' + board[9])
@@ -26,9 +25,11 @@ def display_board(board):
 def player_input():
     
     marker = ''
+
+    
     
     while not (marker == 'X' or marker == 'O'):
-        marker = input("Player 1 choose X or O for the game : ").upper()
+        marker = input(player1 + " choose X or O for the game : ").upper()
         
     if marker == 'X':
         return ('X', 'O')
@@ -60,10 +61,12 @@ def win_check(board, mark):
 #to check the turn of the player
 import random
 def choose_first():
+
+
     if random.randint(0,1) == 0:
-        return 'Player 2'
+        return player2
     else:
-        return 'Player 1'
+        return player1
 
 
 
@@ -122,10 +125,11 @@ while True:
         
           
     while game_on:
-        if turn == 'Player 1':
+        if turn == player1:
             #player 1 turn
                 
             display_board(theBoard)
+            print(player1)
             position = player_choice(theBoard)
             place_marker(theBoard, player1_marker,position)
             
@@ -143,17 +147,18 @@ while True:
                     break
                     
                 else:
-                    turn = 'Player 2'
+                    turn = player2
                         
         else:
             #player 2 turn
             display_board(theBoard)
+            print(player2)
             position = player_choice(theBoard)
             place_marker(theBoard, player2_marker, position)
 
             if win_check(theBoard, player2_marker):
                 display_board(theBoard)
-                print('Player 2 has won!')
+                print(player2+ ' has won!')
                 game_on = False
             else:
                 if full_board_check(theBoard):
@@ -161,7 +166,7 @@ while True:
                     print('The game is a draw!')
                     break
                 else:
-                    turn = 'Player 1'
+                    turn = player1
 
     if not replay():
         break
