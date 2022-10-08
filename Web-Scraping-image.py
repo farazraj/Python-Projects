@@ -18,7 +18,7 @@ soup.select('.img-thumbnail')
 
 #can use as a list and give index value to find particular image source
 img = soup.select('.img-thumbnail')[0]
-para['src']
+img['src']
 
 #after getting the desired img url request to get the image and add https: in front or if a . appears it means its in the native webpage. 
 image = requests.get('https://toscrape.com/img/books.png')
